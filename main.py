@@ -10,5 +10,7 @@ if choice == 1:
     acc_details()
 
 elif choice == 2:
-
     show_details()
+
+elif choice == 3:
+    withdraw()

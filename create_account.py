@@ -21,12 +21,32 @@ def acc_details():
 
 def show_details():
     no = int(input("Enter the Account number: "))
-    cursor.execute("SELECT * FROM account WHERE Account_no=?",(no,))
+    cursor.execute("SELECT * FROM account WHERE Account_no=?", (no,))
     result = cursor.fetchone()
     for no in result:
         print(no)
 
 
+def withdraw():
+    no = int(input("Enter your Account number: "))
+    amount = int(input("Enter the amount: "))
+    cursor.execute("SELECT bal FROM account WHERE Account_no=?", (no,))
+    old_bal = cursor.fetchone()
+    old = float('.'.join(str(ele) for ele in old_bal))
+    new_bal = old - amount
+    cursor.execute("UPDATE account SET bal=? WHERE Account_no=?",(new_bal,no,))
+    print("Your new balance= ", new_bal)
+    connection.commit()
 
 
+def deposit():
+    no = int(input("Enter your Account number: "))
+    amount = int(input("Enter the amount: "))
+    cursor.execute("SELECT bal FROM account WHERE Account_no=?", (no,))
+    old_bal = cursor.fetchone()
+    old = float('.'.join(str(ele) for ele in old_bal))
+    new_bal = old + amount
+    cursor.execute("UPDATE account SET bal=? WHERE Account_no=?", (new_bal, no,))
+    print("Your new balance= ", new_bal)
+    connection.commit()
 
