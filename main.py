@@ -14,3 +14,6 @@ elif choice == 2:
 
 elif choice == 3:
     withdraw()
+
+elif choice == 4:
+    deposit()
