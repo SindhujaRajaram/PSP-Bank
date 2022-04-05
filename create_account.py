@@ -1,5 +1,6 @@
 import random
 import sqlite3
+
 connection = sqlite3.connect('accdetails.db')
 cursor = connection.cursor()
 
@@ -20,10 +21,12 @@ def acc_details():
 
 def show_details():
     no = int(input("Enter the Account number: "))
-    cursor.execute("SELECT * FROM account")
-
-    for no in cursor.fetchone():
+    cursor.execute("SELECT * FROM account WHERE Account_no=?",(no,))
+    result = cursor.fetchone()
+    for no in result:
         print(no)
+
+
 
 
 
