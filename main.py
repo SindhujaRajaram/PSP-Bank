@@ -17,3 +17,7 @@ elif choice == 3:
 
 elif choice == 4:
     deposit()
+
+else:
+    print("Invalid choice")
+
